@@ -21,13 +21,16 @@ if len(sys.argv) != 2:
 projectName = sys.argv[1]
 
 print("==> Cloning cpp-template into {0}".format(projectName))
-status = call(["git", "clone", "https://github.com/joshpeterson/cpp-template.git", projectName])
+status = call(["git", "clone", "https://github.com/RisingOrange/cpp-template.git", projectName])
 if status != 0:
     sys.exit(status)
 
-gitDirectory = "{0}/.git".format(projectName);
+print("WARNING: normally this would remove .git now, i commented it out")
+"""
+gitDirectory = "{0}\\.git".format(projectName)
 print("==> Removing the {0} directory".format(gitDirectory))
 rmtree("{0}".format(gitDirectory))
+"""
 
 print("==> Changing the project name to {0}".format(projectName))
 replaceTextInFile("{0}/CMakeLists.txt".format(projectName), "cpp-template", projectName)
